@@ -1,0 +1,34 @@
+<project>
+    <property name="package" value="FinalProject"/>
+	<property name="grammarFile" value="ParserGrammar.js"/>
+	
+	<target name="clean">
+        <delete dir="output"/>
+		<delete dir="classes"/>
+		<mkdir dir="output"/>
+		<mkdir dir="classes"/>
+    </target>
+	
+	<target name="sablecc">
+		<java jar="src/sablecc.jar" fork="true">
+			<arg line="src/${grammarFile} -d classes"/>
+		</java>
+    </target>
+	
+	<target name="compile">
+		<javac srcdir="classes" destdir="classes" includeantruntime="false"/>
+		<javac srcdir="src" destdir="classes" includeantruntime="false"/>
+	</target>
+	
+	<target name="generateOutput">
+		<echo message="Generating first output file"/>
+		<java classname="${package}.Main" classpath="classes" input="input/prog1.txt" output="output/prog1.s"/>
+	</target>
+	
+	<target name="all">
+        <antcall target="clean"></antcall>
+        <antcall target="sablecc"></antcall>
+        <antcall target="compile"></antcall>
+		<antcall target="generateOutput"></antcall>
+    </target>
+</project>

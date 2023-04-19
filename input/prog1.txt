@@ -1,0 +1,361 @@
+BEGIN
+
+newline, heading : STRING;
+
+globalString, declTest1, declTest2 : STRING;
+globalInt : INT;
+globalReal : REAL;
+globalBool : BOOLEAN;
+
+globalGetString : STRING;
+
+VOID MAIN()
+{
+	newline := "\n";
+	
+	
+	
+	heading := "GlobalVars\n";
+	PUT(heading);
+	
+	globalString := "HelloWorld";
+	globalInt := 5;
+	globalReal := 5.2;
+	globalBool := TRUE;
+	
+	PUT(globalString);
+	PUT(newline);
+	PUT(globalInt);
+	PUT(newline);
+	PUT(globalReal);
+	PUT(newline);
+	PUT(globalBool);
+	PUT(newline);
+	
+	globalString := GET();
+	globalInt := GET();
+	globalReal := GET();
+	globalBool := GET();
+	
+	PUT(globalString);
+	PUT(newline);
+	PUT(globalInt);
+	PUT(newline);
+	PUT(globalReal);
+	PUT(newline);
+	PUT(globalBool);
+	PUT(newline);
+	
+	
+	
+	
+	heading := "\nLocalVars\n";
+	PUT(heading);
+	
+	localString : STRING;
+	localInt, declTest1, declTest2 : INT;
+	localReal : REAL;
+	localBool : BOOLEAN;
+	
+	PUT(localString);
+	PUT(newline);
+	PUT(localInt);
+	PUT(newline);
+	PUT(localReal);
+	PUT(newline);
+	PUT(localBool);
+	PUT(newline);
+	
+	localString := "GoodbyeWorld";
+	localInt := 2;
+	localReal := 2.5;
+	localBool := FALSE;
+	
+	PUT(localString);
+	PUT(newline);
+	PUT(localInt);
+	PUT(newline);
+	PUT(localReal);
+	PUT(newline);
+	PUT(localBool);
+	PUT(newline);
+	
+	localString := GET();
+	localInt := GET();
+	localReal := GET();
+	localBool := GET();
+	
+	PUT(localString);
+	PUT(newline);
+	PUT(localInt);
+	PUT(newline);
+	PUT(localReal);
+	PUT(newline);
+	PUT(localBool);
+	PUT(newline);
+	
+	
+	
+	
+	heading := "\nArrayVars\n";
+	PUT(heading);
+	
+	stringArr : STRING[4];
+	intArr : INT[4];
+	realArr : REAL[4];
+	boolArr : BOOLEAN[4];
+	
+	PUT(stringArr[0]);
+	PUT(newline);
+	
+	PUT(intArr[0]);
+	PUT(newline);
+	PUT(intArr[1]);
+	PUT(newline);
+	PUT(intArr[2]);
+	PUT(newline);
+	PUT(intArr[3]);
+	PUT(newline);
+	
+	stringArr[3] := "NiceToMeetYou";
+	intArr[2] := 3;
+	realArr[1] := 6.7;
+	boolArr[0] := TRUE;
+	
+	PUT(stringArr[3]);
+	PUT(newline);
+	PUT(intArr[2]);
+	PUT(newline);
+	PUT(realArr[1]);
+	PUT(newline);
+	PUT(boolArr[0]);
+	PUT(newline);
+	
+	stringArr[0] := GET();
+	intArr[1] := GET();
+	realArr[2] := GET();
+	boolArr[3] := GET();
+	
+	PUT(stringArr[0]);
+	PUT(newline);
+	PUT(intArr[1]);
+	PUT(newline);
+	PUT(realArr[2]);
+	PUT(newline);
+	PUT(boolArr[3]);
+	PUT(newline);
+	
+	
+	
+	
+	heading := "\nWideningAssignments\n";
+	PUT(heading);
+	
+	widenInt : INT;
+	widenReal : REAL;
+	
+	widenInt := FALSE;
+	PUT(widenInt);
+	PUT(newline);
+	
+	widenReal := 5;
+	PUT(widenReal);
+	PUT(newline);
+	
+	widenReal := TRUE;
+	PUT(widenReal);
+	PUT(newline);
+	
+	
+	
+	
+	heading := "\nExpressionsAndOperators\n";
+	PUT(heading);
+	
+	globalInt := intArr[0] + 5 * 20 / (localInt - 10 - 20);
+	PUT(globalInt);
+	PUT(newline);
+	
+	localReal := localReal * localReal * localReal / localReal;
+	PUT(localReal);
+	PUT(newline);
+	
+	localInt := 5;
+	localInt := -localInt;
+	PUT(localInt);
+	PUT(newline);
+	
+	localBool := 5 == 5;
+	PUT(localBool);
+	PUT(newline);
+	
+	globalBool := ((localInt < intArr[2]) != (localReal >= globalReal)) == TRUE;
+	PUT(globalBool);
+	PUT(newline);
+	
+	boolArr[3] := boolArr[3] != (5 <= intArr[3]) == (localReal > localReal);
+	PUT(boolArr[3]);
+	PUT(newline);
+	
+	localInt++;
+	PUT(localInt);
+	PUT(newline);
+	
+	globalInt--;
+	PUT(globalInt);
+	PUT(newline);
+	
+	intArr[3]--;
+	PUT(intArr[3]);
+	PUT(newline);
+	
+	
+	
+	
+	heading := "\nIfThenElse\n";
+	PUT(heading);
+	
+	message : STRING;
+	message := "NothingTrue\n";
+	
+	IF (localBool) THEN
+	{
+		message := "localBoolTrue\n";
+	}
+	
+	IF (globalBool) THEN
+	{
+		message := "globalBoolTrue\n";
+	}
+	
+	PUT(message);
+	
+	ifInt1 : INT;
+	ifInt2 : INT;
+	
+	ifInt1 := GET();
+	ifInt2 := GET();
+	
+	PUT(ifInt1);
+	PUT(newline);
+	PUT(ifInt2);
+	PUT(newline);
+	
+	IF (ifInt1 == ifInt2) THEN
+	{
+		ifInt1 : INT;
+		ifInt1 := 7654321;
+		PUT(ifInt1);
+		PUT(newline);
+		message := "WellDone\n";
+	}
+	ELSE
+	{
+		ifInt1 : INT;
+		ifInt1 := 9876543;
+		PUT(ifInt1);
+		PUT(newline);
+		message := "PoorJob\n";
+	}
+	
+	PUT(message);
+	
+	
+	
+	
+	heading := "\nLoopsAndSwitch\n";
+	PUT(heading);
+	
+	
+	FOR (INT i := 0; i < 3; i++)
+	{
+		j : INT;
+		FOR (j := 0; j < 3; j++)
+		{
+			FOR (INT k := 0; k < 3; k++)
+			{
+				l : INT;
+				FOR (l := 0; l < 3; l++)
+				{
+					PUT(i);
+					PUT(j);
+					PUT(k);
+					PUT(l);
+					PUT(newline);
+				}
+			}
+		}
+	}
+	
+	message := "ShouldPrint_123456789_23456789_..._89_9";
+
+	FOR (globalInt := 5; globalInt < 100; globalInt := globalInt + 5)
+	{
+		forInt : INT;
+		
+		FOR (forInt := globalInt / 5; forInt < 10; forInt++)
+		{
+			PUT(forInt);
+		}
+		PUT(newline);
+	}
+	
+	prompt : STRING;
+	prompt := "How_many_numbers_would_you_like?\n";
+	PUT(prompt);
+	
+	total, current : INT;
+	current := 1;
+	total := GET();
+	
+	WHILE (current <= total)
+	{
+		PUT(current);
+		PUT(newline);
+		current++;
+	}
+	
+	good, bad, close : STRING;
+	good := "GOOD\n";
+	bad := "WRONG\n";
+	close := "CLOSE\n";
+	
+	mathProblem : STRING;
+	mathProblem := "What_is_3*5?\n";
+	
+	correct : BOOLEAN;
+	
+	WHILE (correct == FALSE)
+	{
+		PUT(mathProblem);
+	
+		answer : INT;
+		answer := GET();
+		
+		SWITCH (answer)
+		{
+			CASE (13):
+			CASE (14):
+			CASE (16):
+			CASE (17):
+				PUT(close);
+				correct := FALSE;
+				BREAK;
+			CASE (15):
+				PUT(good);
+				correct := TRUE;
+				BREAK;
+			DEFAULT:
+				PUT(bad);
+				correct := FALSE;
+		}
+	}
+	
+	
+	
+	
+	thankYou : STRING;
+	thankYou := "Thank_You_For_Playing\n";
+	PUT(thankYou);
+}
+END

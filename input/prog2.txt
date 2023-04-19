@@ -1,0 +1,99 @@
+BEGIN
+
+fieldDuplicate, b, fieldDuplicate : INT;
+
+VOID MAIN()
+{
+	varDuplicate, d, varDuplicate : REAL;
+	
+	undeclaredVarInt := 5;
+	undeclaredVarStr := "Hello";
+	
+	stringToReal : REAL;
+	stringToReal := "Hi";
+	realToString : STRING;
+	realToString := 5.5;
+	
+	compareInt : INT;
+	compareReal : REAL;
+	compareInt := 5;
+	compareReal := 10;
+	IF (compareInt > compareReal) THEN
+	{
+		insideScope : INT;
+	}
+	
+	insideScope := 5;
+	
+	notBoolean : INT;
+	outsideScope : REAL;
+	IF (notBoolean) THEN
+	{
+		outsideScope : REAL;
+		outsideScope := 5;
+		insideFirstScope : INT;
+	}
+	ELSE
+	{
+		insideFirstScope := 5;
+	}
+	
+	WHILE (TRUE)
+	{
+		notDeclared1 := GET();
+		PUT(notDeclared2);
+	}
+	
+	notDeclared3++;
+	notDeclared4--;
+	
+	FOR (notDeclared5 := 2; notDeclared6 < 32; inFor1 := inFor2)
+	{
+		inFor1, inFor2 : INT;
+		FOR (INT inFor1 := inFor2; TRUE; inFor1++)
+		{
+			inFor2 := 5;
+		}
+	}
+	
+	SWITCH(notDeclared7)
+	{
+		CASE(1):
+			case1 : INT;
+			BREAK;
+		CASE(2):
+			case1 := 5;
+		DEFAULT:
+			case1 := 10;
+	}
+	
+	exprTest : INT;
+	exprTest := 5 > 2.5;
+	
+	operandTest : INT;
+	operandTest := FALSE + 10;
+	
+	termTest : INT;
+	termTest := FALSE * 2.5;
+	
+	negateFactor : INT;
+	negateFactor := - notDeclared8;
+	
+	nestedExpr : INT;
+	nestedExpr := FALSE + 5 * 10.5;
+	
+	array : INT[10];
+	array[11] := 10;
+	
+	notArray : INT;
+	notArray[1] := 10;
+	
+	array[1] := 5.5;
+}
+
+VOID MAIN()
+{
+	
+}
+
+END
